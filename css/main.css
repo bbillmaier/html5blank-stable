@@ -36,3 +36,14 @@ div.single-project-container {
 .grid-item--width4 { 
 	width: 100%; 
 }
+
+.project-image-container img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 300ms ease;
+}
+
+.project-image-container img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}

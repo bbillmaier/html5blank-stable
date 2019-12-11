@@ -23,10 +23,10 @@
 		<div id="single-project-<?php echo $project->ID; ?>" class="single-project-container grid-item grid-item--width<?php echo $projectSize; ?>">
 			<div class="single-project-container-inner">
 				<div class="project-image-container">
-					<img src="<?php echo $projectImage; ?>">
+					<a href="<?php echo $projectGUID; ?>"><img src="<?php echo $projectImage; ?>"></a>
 				</div>
 				<div class="project-info-container">
-					<h3><?php echo $projectTitle; ?></h3>
+					<h3><a href="<?php echo $projectGUID; ?>"><?php echo $projectTitle; ?></a></h3>
 					<p><?php echo $projectDesc; ?></p>
 				</div>
 			</div>

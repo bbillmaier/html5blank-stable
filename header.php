@@ -1,0 +1,49 @@
+<!doctype html>
+<html <?php language_attributes(); ?> class="no-js">
+	<head>
+		<meta charset="<?php bloginfo('charset'); ?>">
+		<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
+
+		<link href="//www.google-analytics.com" rel="dns-prefetch">
+        <link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
+        <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
+
+        <?php 
+        	include 'included-files.php';
+        	wp_enqueue_style( 'main', get_stylesheet_uri() );
+
+        ?>
+
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="<?php bloginfo('description'); ?>">
+
+		<?php wp_head(); ?>
+		<script>
+        // conditionizr.com
+        // configure environment tests
+        conditionizr.config({
+            assets: '<?php echo get_template_directory_uri(); ?>',
+            tests: {}
+        });
+        </script>
+
+	</head>
+	<body <?php body_class(); ?>>
+
+		<!-- wrapper -->
+		<div class="wrapper">
+
+			<!-- header -->
+			<header class="header clear" role="banner">
+				<div id="logo-container">
+					<div id="logo-container-inner">
+						<img src="http://127.0.0.1/wordpress/wp-content/uploads/2019/12/Momzboy.jpg" class="header-logo">
+					</div>
+					<h1>Blake Billmaier Portfolio Website</h1>
+				</div>
+
+
+			</header>
+			<!-- /header -->

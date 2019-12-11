@@ -29,7 +29,8 @@
 			success : function(data) {              
 				console.log(data);
 				console.log(data['properties']['forecastHourly']);
-				hourlyForcastURL = data['properties']['foecastHourly'];
+				hourlyForcastURL = data['properties']['forecastHourly'];
+				getHourlyForecast(hourlyForcastURL);
 			},
 			error : function(request,error)
 			{
@@ -38,45 +39,40 @@
 		});
 		console.log(hourlyForcastURL);
 
-
+		function getHourlyForecast(theUrl){
+		$.ajax({
+			dataType: "json",
+			url: theUrl,
+			success : function(data) {              
+				console.log('THE Forecast');
+				console.log(data);
+				var forecastData = data;
+				var periodsArray = data['properties']['periods'];
+				var html = "";
+				periodsArray.forEach(function(period){
+					console.log(period);
+					var number = period['number'];
+					var startTime = period['startTime'];
+					var temperature = period['temperature'];
+					var shortForecast = period['shortForecast'];
+					html += '<div class="hourly-forecast-block hb-'+number+'"><h2>'+ startTime +'</h2><img src="http://placehold.it/50x50"><h3>'+ temperature +' #8457</h3><h4>'+shortForecast+'</h4></div>';
+				});
+				$('#hourly-forecast-inner').html(html);
+				console.log('------');
+			},
+			error : function(request,error)
+			{
+				console.log("Request: "+JSON.stringify(request));
+			}
+		});
+		}
 
 	});
 </script>
 
 <div id="hourly-forecast-cont">
 	<div id="hourly-forecast-inner">
-		<div class="hourly-forecast-block hb-1">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-2">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-3">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-4">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-5">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-6">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-7">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
-		<div class="hourly-forecast-block hb-8">
-			<img src="http://placehold.it/50x50">
-			<h3>75 &#8457</h3>
-		</div>
+		
 	</div>
 </div>
 
